@@ -1,22 +1,19 @@
-from src.fetch_news import fetch_news
-from src.deduplicate import remove_duplicates
 import subprocess
 import sys
 
-print("=" * 50)
-print("AI NEWS INTELLIGENCE")
-print("=" * 50)
+print("Fetching news...")
+subprocess.run([sys.executable, "src/fetch_news.py"], check=True)
 
-print("\n1. Fetching latest news...")
-fetch_news()
+print("Removing duplicates...")
+subprocess.run([sys.executable, "src/deduplicate.py"], check=True)
 
-print("\n2. Removing duplicates...")
-remove_duplicates()
-
-print("\n3. Generating AI summaries...")
+print("Summarizing...")
 subprocess.run([sys.executable, "src/summarize.py"], check=True)
 
-print("\n4. Uploading to Google Sheets...")
+print("Updating Google Sheet...")
 subprocess.run([sys.executable, "src/sheets.py"], check=True)
 
-print("\n✅ Workflow completed successfully!")
+print("Sending email...")
+subprocess.run([sys.executable, "src/email_report.py"], check=True)
+
+print("Done!")
