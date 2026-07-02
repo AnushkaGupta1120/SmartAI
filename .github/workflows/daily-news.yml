@@ -2,18 +2,19 @@ name: SmartAI Daily
 
 on:
   schedule:
-    # Runs every day at 5:30 UTC = 11:00 AM IST
-    - cron: "30 5 * * *"
+    - cron: "30 5 * * *" # 11:00 AM IST
 
   workflow_dispatch:
 
 jobs:
   smart-ai-news:
-
     runs-on: ubuntu-latest
 
-    steps:
+    defaults:
+      run:
+        working-directory: ai-news-intelligence
 
+    steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 

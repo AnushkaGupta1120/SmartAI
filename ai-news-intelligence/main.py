@@ -8,7 +8,7 @@ print("Removing duplicates...")
 subprocess.run([sys.executable, "src/deduplicate.py"], check=True)
 
 print("Summarizing...")
-subprocess.run([sys.executable, "src/summarize.py"], check=True)
+subprocess.run([sys.executable, "src/summarise.py"], check=True)
 
 print("Updating Google Sheet...")
 subprocess.run([sys.executable, "src/sheets.py"], check=True)
